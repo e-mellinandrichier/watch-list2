@@ -1,0 +1,16 @@
+<%= link_to "My lists", lists_path %>
+<%= link_to "Create a movie list", new_list_path %>
+<%= link_to "New bookmark", new_list_bookmark_path(:list_id) %>
+<ul>
+  <% @lists.each do |list| %>
+    <li><%= list.name %></li>
+    <li></li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @movies.each do |movie| %>
+    <%= movie.title %>
+    <%= image_tag movie.poster_url, alt: movie.title, width: 200%>
+  <% end %>
+</ul>
