@@ -1,17 +1,23 @@
 <div class="banner">
+<h1>Save ur favorite movies ! <3</h1>
 </div>
-<h1>My lists</h1>
-<ul>
+<h1 class="trending">My lists</h1>
   <% @lists.each do |list| %>
     <%= link_to list_path(list) do %>
-    <li><%= list.name %></li>
+    <div class="list-name btn btn-dark btn-lg btn-block">
+      <%= list.name %>
+    </div>
     <% end %>
   <% end %>
-</ul>
 
-<ul>
-  <% @movies.each do |movie| %>
-    <%= movie.title %>
-    <%= image_tag movie.poster_url, alt: movie.title, width: 200%>
-  <% end %>
-</ul>
+<div class="movies">
+  <h1 class="trending">Trending movies</h1>
+  <div class="container2">
+    <% @movies.each do |movie| %>
+    <div class="movie-grid-item">
+      <%= movie.title %>
+      <%= image_tag movie.poster_url, alt: movie.title, width: 200%>
+    </div>
+    <% end %>
+  </div>
+</div>

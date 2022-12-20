@@ -1,0 +1,27 @@
+.container2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 36px;
+  justify-content: center;
+  padding: 102px;
+}
+.movies {
+  background-color: black;
+  color: white;
+}
+
+.movie-grid-item {
+  width: 100%;
+  padding: 15px;
+}
+
+.trending {
+  text-align: center;
+  text-decoration: overline;
+  margin-top: 15px;
+  padding-top: 25px;
+}
+
+.list-name {
+  border: 3px,;
+}
