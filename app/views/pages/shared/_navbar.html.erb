@@ -1,0 +1,8 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <div class="logo">
+  <%= image_tag("logowatchlist") %>
+  </div>
+  <%= link_to "Create a movie list", new_list_path, class: "btn btn-light" %>
+  <%= link_to "New bookmark", new_list_bookmark_path(:list_id), class: "btn btn-light" %>
+  <%= link_to "Homepage", lists_path, class: "btn btn-light" %>
+</div>

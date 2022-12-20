@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: [:show, :destroy]
-  before_action :set_list, only: [:new, :create]
+   before_action :set_list, only: [:new, :create]
+
 
   def new
     @bookmark = Bookmark.new # Need to instantiate the form_with
@@ -8,21 +9,21 @@ class BookmarksController < ApplicationController
   end
 
   def create
+    @list = List.find(params[:bookmark][:list_id])
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.save
     redirect_to lists_path(@list)
   end
 
   def destroy
-    @bookmark = Bookmark.find(params[:id])
     @bookmark.destroy
-    redirect_to bookmarks_path, status: :see_other
+    redirect_to list_path(@bookmark.list), status: :see_other
   end
 
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:comment, :id, :movie_id)
+    params.require(:bookmark).permit(:comment, :id, :movie_id, :list_id)
   end
 
   def set_bookmark
@@ -30,6 +31,6 @@ class BookmarksController < ApplicationController
   end
 
   def set_list
-    @list = List.find(params[:list_id])
+    @list = List.find(params[:list_id], (@list))
   end
 end

@@ -2,5 +2,6 @@
   <%= f.label :comment %>
   <%= f.text_field :comment %>
   <%= f.association :movie, prompt: "Select a movie", input_html: {data: { controller: "tom-select"}} %>
+  <%= f.association :list, prompt: "Select a list", input_html: {data: { controller: "tom-select"}} %>
   <%= f.submit %>
 <% end %>

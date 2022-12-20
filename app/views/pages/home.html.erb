@@ -1,10 +1,17 @@
-<%= link_to "My lists", lists_path %>
-<%= link_to "Create a movie list", new_list_path %>
-
+<div class="banner">
+</div>
+<h1>My lists</h1>
 <ul>
   <% @lists.each do |list| %>
     <%= link_to list_path(list) do %>
     <li><%= list.name %></li>
     <% end %>
+  <% end %>
+</ul>
+
+<ul>
+  <% @movies.each do |movie| %>
+    <%= movie.title %>
+    <%= image_tag movie.poster_url, alt: movie.title, width: 200%>
   <% end %>
 </ul>

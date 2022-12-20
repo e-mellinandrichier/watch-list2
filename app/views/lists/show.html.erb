@@ -1,6 +1,14 @@
-<h2><%= @list.name %></h2>
+<h1><%= @list.name %></h1>
 
-<p><%= @list.movies.overview %></p>
-<p><%= @list.movies.rating %></p>
-<p><%= image_tag @movie.poster_url, alt: @movie.title, width: 200%></p>
+<% @list.movies.each do |movie| %>
+  <p><%= movie.overview %></p>
+  <p><%= movie.rating %></p>
+  <p><%= image_tag movie.poster_url, alt: movie.title, width: 200 %></p>
+  <% @list.bookmarks.each do |bookmark| %>
+    <%= bookmark.comment %>
+    <%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %>
+  <% end %>
+<% end %>
 <%= link_to "Add a bookmark", new_list_bookmark_path(@list) %>
+<%= link_to "Back", lists_path %>
+<%= link_to "delete this list", list_path(@list), class: "btn btn-cancel", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" } %>
